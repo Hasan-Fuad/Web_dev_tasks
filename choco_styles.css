@@ -1,0 +1,310 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, saddlebrown 0%, black 100%);
+    padding: 2rem;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    color: gold;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.card {
+    width: 420px;
+    height: 340px;
+    perspective: 1500px;
+}
+
+.card .content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.75, 0, 0.85, 1);
+}
+
+.more {
+    display: none;
+}
+
+.more:checked ~ .content {
+    transform: rotateY(180deg);
+}
+
+.front,
+.back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.front .inner,
+.back .inner {
+    height: 100%;
+    display: grid;
+    padding: 2rem;
+    transform: translateZ(80px) scale(0.94);
+}
+
+.front {
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+}
+
+.front:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 12px;
+    backface-visibility: hidden;
+    background: linear-gradient(
+        40deg,
+        rgba(139, 69, 19, 0.7),
+        rgba(212, 175, 55, 0.5)
+    );
+}
+
+.front .inner {
+    grid-template-rows: 4fr 1fr 1fr 2fr 1fr;
+    justify-items: center;
+    z-index: 1;
+}
+
+.front h2 {
+    grid-row: 2;
+    margin-bottom: 0.3em;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: white;
+    font-weight: 600;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+
+.rating {
+    grid-row: 3;
+    color: gold;
+    font-size: 24px;
+    display: flex;
+    flex-flow: row nowrap;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, beige 0%, wheat 100%);
+    border: 3px solid gold;
+}
+
+.back .inner {
+    grid-template-rows: auto auto 1fr auto auto;
+    gap: 1rem;
+}
+
+.chocolate-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    text-align: center;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: saddlebrown;
+    font-size: 1.5rem;
+}
+
+.info-item .value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: saddlebrown;
+}
+
+.info-item .label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: brown;
+    text-align: end;
+    overflow-y: auto;
+}
+
+.description {
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.description:hover {
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.origin-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: saddlebrown;
+}
+
+.origin {
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.price {
+    font-size: 1.2rem;
+    color: gold;
+    font-weight: 700;
+}
+
+.button {
+    grid-row: -1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: pointer;
+    display: block;
+    padding: 0 2rem;
+    height: 3rem;
+    line-height: 3rem;
+    background-color: transparent;
+    border: solid 2px white;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    backface-visibility: hidden;
+    transition: 0.3s ease-in-out;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    font-family: 'Inter', sans-serif;
+}
+
+.button:hover {
+    background-color: white;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    text-shadow: none;
+    color: saddlebrown;
+}
+
+.button.return {
+    color: saddlebrown;
+    border-color: saddlebrown;
+    text-shadow: none;
+    padding: 0 0.6rem;
+    width: 80%;
+    justify-self: center;
+    margin-top: 1rem;
+}
+
+.button.return:hover {
+    background-color: saddlebrown;
+    color: white;
+    box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+}
+
+card:nth-child(3) .button.return {
+    width: 30%;
+}
+
+.card:nth-child(3) .description {
+    min-width: 50px;
+}
+
+.buy-btn {
+    background: linear-gradient(45deg, gold, darkgoldenrod);
+    border: none;
+    color: white;
+    margin-top: 1rem;
+}
+
+.buy-btn:hover {
+    background: linear-gradient(45deg, darkgoldenrod, gold);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+/* Dark chocolate card */
+.dark-bg {
+    background-image: url('https://images.unsplash.com/photo-1575377427642-087cf684f29d?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+}
+
+/* Milk chocolate card */
+.milk-bg {
+    background-image: url('https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+}
+
+/* White chocolate card */
+.white-bg {
+    background-image: url('https://images.unsplash.com/photo-1545781809-517e25308e4f?q=80&w=978&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: whitesmoke;
+}
+
+::-webkit-scrollbar-thumb {
+    background: gold;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: darkgoldenrod;
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
