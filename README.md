@@ -1,6 +1,6 @@
 # Exotic Chocolate  3D Flip Cards
 
-A responsive showcase of premium chocolates featuring interactive 3D flip cards.
+A responsive showcase of premium chocolates featuring interactive 3D flip cards that is used to advertise high end-luxury chocolates.
 
 ## 🍫 Features
 
